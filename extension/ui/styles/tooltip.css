@@ -1,0 +1,56 @@
+/* Tooltip Styles */
+.eti-threat-tooltip {
+  position: absolute;
+  background: #1f2937;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+  max-width: 300px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.eti-threat-tooltip.show {
+  opacity: 1;
+}
+
+.eti-threat-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #1f2937;
+}
+
+.eti-threat-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.eti-threat-badge.safe {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.eti-threat-badge.suspicious {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.eti-threat-badge.dangerous {
+  background: #fee2e2;
+  color: #991b1b;
+}

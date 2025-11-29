@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Extension Icons</title>
+</head>
+<body>
+    <h1>Creating Icons...</h1>
+    <canvas id="canvas"></canvas>
+    <script>
+        // Create icons programmatically
+        function createIcon(size) {
+            const canvas = document.getElementById('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            
+            // Background gradient (purple to blue)
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // White shield shape
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            const centerX = size / 2;
+            const centerY = size / 2;
+            const shieldWidth = size * 0.6;
+            const shieldHeight = size * 0.7;
+            
+            // Simple shield
+            ctx.moveTo(centerX, centerY - shieldHeight/2);
+            ctx.lineTo(centerX + shieldWidth/2, centerY - shieldHeight/3);
+            ctx.lineTo(centerX + shieldWidth/2, centerY + shieldHeight/4);
+            ctx.lineTo(centerX, centerY + shieldHeight/2);
+            ctx.lineTo(centerX - shieldWidth/2, centerY + shieldHeight/4);
+            ctx.lineTo(centerX - shieldWidth/2, centerY - shieldHeight/3);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Download
+            const link = document.createElement('a');
+            link.download = `icon${size}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        // Create all three sizes
+        setTimeout(() => createIcon(16), 100);
+        setTimeout(() => createIcon(48), 500);
+        setTimeout(() => createIcon(128), 900);
+        
+        document.body.innerHTML += '<p>Check your downloads folder for icon16.png, icon48.png, and icon128.png</p>';
+        document.body.innerHTML += '<p>Move them to the icons/ folder</p>';
+    </script>
+</body>
+</html>

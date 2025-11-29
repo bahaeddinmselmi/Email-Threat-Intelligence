@@ -1,0 +1,507 @@
+/* Threat Banner Styles */
+.eti-threat-banner {
+  position: relative;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 8px;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.eti-threat-banner.eti-level-safe {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.eti-threat-banner.eti-level-suspicious {
+  background: linear-gradient(135deg, #fbbf24, #f97316);
+}
+
+.eti-threat-banner.eti-level-dangerous {
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
+}
+
+.eti-banner-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.eti-banner-icon {
+  font-size: 32px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.eti-banner-info {
+  flex: 1;
+}
+
+.eti-banner-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.eti-score {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.eti-banner-message {
+  margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.eti-banner-message em {
+  font-style: normal;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.eti-reasons-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+  font-size: 13px;
+}
+
+.eti-reasons-list li {
+  padding: 4px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.eti-reasons-list li:before {
+  content: '•';
+  position: absolute;
+  left: 8px;
+}
+
+.eti-banner-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.eti-details-btn,
+.eti-dismiss-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.eti-details-btn {
+  background: rgba(255, 255, 255, 0.9);
+  color: #1f2937;
+}
+
+.eti-details-btn:hover {
+  background: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.eti-dismiss-btn {
+  background: transparent;
+  color: white;
+  font-size: 24px;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+.eti-dismiss-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Detailed Panel */
+.eti-dashboard-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.eti-panel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.eti-panel-container {
+  position: relative;
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: scaleIn 0.3s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.eti-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.eti-panel-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.eti-panel-close {
+  background: none;
+  border: none;
+  font-size: 32px;
+  line-height: 1;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.eti-panel-close:hover {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.eti-panel-body {
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.eti-panel-section {
+  margin-bottom: 24px;
+}
+
+.eti-panel-section:last-child {
+  margin-bottom: 0;
+}
+
+.eti-panel-section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #667eea;
+}
+
+.eti-panel-section-content {
+  color: #4b5563;
+  font-size: 14px;
+}
+
+/* Score Display */
+.eti-score-display {
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+}
+
+.eti-score-meter {
+  height: 24px;
+  background: #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.eti-score-fill {
+  height: 100%;
+  transition: width 0.5s ease-out;
+  border-radius: 12px;
+}
+
+.eti-score-label {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1f2937;
+}
+
+.eti-recommendation {
+  font-size: 14px;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Info Table */
+.eti-info-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.eti-info-table tr {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.eti-info-table tr:last-child {
+  border-bottom: none;
+}
+
+.eti-info-table td {
+  padding: 10px 0;
+  vertical-align: top;
+}
+
+.eti-info-table td:first-child {
+  width: 140px;
+  color: #6b7280;
+}
+
+/* Content Analysis */
+.eti-content-analysis p {
+  margin-bottom: 8px;
+}
+
+.eti-content-analysis ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 8px;
+}
+
+.eti-content-analysis li {
+  padding: 6px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.eti-content-analysis li:before {
+  content: '⚠';
+  position: absolute;
+  left: 0;
+}
+
+/* URL List */
+.eti-url-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.eti-url-item {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.eti-url-item.dangerous {
+  background: #fef2f2;
+  border-color: #fca5a5;
+}
+
+.eti-url-item.safe {
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+.eti-url-link {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  margin-bottom: 6px;
+  word-break: break-all;
+}
+
+.eti-url-status {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.eti-url-redirects {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+/* Attachment List */
+.eti-attachment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.eti-attachment-item {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.eti-attachment-item.dangerous {
+  background: #fef2f2;
+  border-color: #fca5a5;
+}
+
+.eti-attachment-item.safe {
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+.eti-attachment-name {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.eti-attachment-info {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.eti-malware-warning {
+  margin-top: 8px;
+  padding: 8px;
+  background: #fee2e2;
+  color: #991b1b;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Loading Spinner */
+.eti-spinner {
+  position: relative;
+  padding: 20px;
+  margin: 16px 0;
+  background: white;
+  border: 2px solid #667eea;
+  border-radius: 8px;
+  text-align: center;
+  z-index: 9999;
+}
+
+.eti-spinner-icon {
+  font-size: 32px;
+  color: #667eea;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.eti-spinner-text {
+  margin-top: 8px;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+/* Email Metadata Styles */
+.eti-metadata-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.eti-metadata-item {
+  padding: 10px;
+  background: #f9fafb;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  font-size: 13px;
+}
+
+.eti-metadata-item strong {
+  display: block;
+  color: #374151;
+  margin-bottom: 4px;
+}
+
+/* Sender Risks Styles */
+.eti-sender-risks {
+  margin-top: 12px;
+  padding: 12px;
+  background: #fef3c7;
+  border-left: 4px solid #f59e0b;
+  border-radius: 4px;
+}
+
+.eti-sender-risks p {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: #92400e;
+}
+
+.eti-sender-risks ul {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 12px;
+  color: #78350f;
+}
+
+.eti-sender-risks li {
+  margin-bottom: 4px;
+}

@@ -1,0 +1,26 @@
+{
+  "name": "email-threat-intelligence",
+  "version": "1.0.0",
+  "description": "Browser extension for real-time email threat detection",
+  "scripts": {
+    "start": "cd backend && npm start",
+    "dev": "cd backend && npm run dev",
+    "install-backend": "cd backend && npm install",
+    "test": "cd backend && npm test"
+  },
+  "keywords": [
+    "email",
+    "security",
+    "threat-detection",
+    "phishing",
+    "browser-extension",
+    "gmail",
+    "outlook"
+  ],
+  "author": "Email Threat Intelligence Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/email-threat-intelligence.git"
+  }
+}

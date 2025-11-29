@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Threat Intelligence</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="popup-header">
+      <div class="header-content">
+        <div class="header-titles">
+          <div class="header-title-row">
+            <img src="../../icons/icon48.png" alt="Email Threat Intelligence" class="header-icon" />
+            <h1>🛡️ Email Threat Intelligence</h1>
+          </div>
+          <p class="header-subtitle">Real-time phishing radar for your inbox</p>
+        </div>
+        <div class="header-status">
+          <span id="apiStatus" class="status-indicator">●</span>
+          <span id="apiStatusText">Checking...</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="popup-nav">
+      <button class="nav-tab active" data-tab="dashboard">Dashboard</button>
+      <button class="nav-tab" data-tab="history">History</button>
+      <button class="nav-tab" data-tab="settings">Settings</button>
+    </nav>
+
+    <!-- Dashboard Tab -->
+    <div id="dashboardTab" class="tab-content active">
+      <div class="current-email-section">
+        <h2>Current Email Analysis</h2>
+        <div id="currentEmailInfo" class="email-info">
+          <p class="no-data">No email currently analyzed</p>
+        </div>
+        <button id="analyzeCurrentBtn" class="btn btn-primary">Analyze Current Email</button>
+      </div>
+
+      <div class="quick-stats">
+        <h3>Quick Stats</h3>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value" id="statTotal">0</div>
+            <div class="stat-label">Emails Analyzed</div>
+          </div>
+          <div class="stat-card safe">
+            <div class="stat-value" id="statSafe">0</div>
+            <div class="stat-label">Safe</div>
+          </div>
+          <div class="stat-card suspicious">
+            <div class="stat-value" id="statSuspicious">0</div>
+            <div class="stat-label">Suspicious</div>
+          </div>
+          <div class="stat-card dangerous">
+            <div class="stat-value" id="statDangerous">0</div>
+            <div class="stat-label">Dangerous</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quick-url-section">
+        <h3>Quick URL Check</h3>
+        <div class="quick-url-row">
+          <input type="text" id="quickUrlInput" class="quick-url-input" placeholder="Paste a link to check (https://...)" />
+          <button id="quickUrlBtn" class="btn btn-primary btn-compact">Check</button>
+        </div>
+        <div id="quickUrlResult" class="quick-url-result">
+          <p class="no-data">Paste a link above to analyze it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- History Tab -->
+    <div id="historyTab" class="tab-content">
+      <div class="history-header">
+        <h2>Analysis History</h2>
+        <button id="clearHistoryBtn" class="btn btn-small">Clear All</button>
+      </div>
+      <div id="historyList" class="history-list">
+        <p class="no-data">No history available</p>
+      </div>
+    </div>
+
+    <!-- Settings Tab -->
+    <div id="settingsTab" class="tab-content">
+      <h2>Settings</h2>
+      <form id="settingsForm" class="settings-form">
+        <div class="form-group">
+          <label for="apiUrl">API URL:</label>
+          <input type="text" id="apiUrl" name="apiUrl" placeholder="http://localhost:3000/api">
+        </div>
+
+        <div class="form-section">
+          <h3>Analysis Features</h3>
+          <div class="checkbox-group">
+            <label>
+              <input type="checkbox" id="enableSenderCheck" name="enableSenderCheck">
+              Sender Reputation Check
+            </label>
+            <label>
+              <input type="checkbox" id="enableUrlCheck" name="enableUrlCheck">
+              URL Deep Scanning
+            </label>
+            <label>
+              <input type="checkbox" id="enableContentAnalysis" name="enableContentAnalysis">
+              AI Content Analysis
+            </label>
+            <label>
+              <input type="checkbox" id="enableAttachmentCheck" name="enableAttachmentCheck">
+              Attachment Safety Check
+            </label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>Behavior</h3>
+          <div class="checkbox-group">
+            <label>
+              <input type="checkbox" id="enableVisualWarnings" name="enableVisualWarnings">
+              Show Visual Warnings
+            </label>
+            <label>
+              <input type="checkbox" id="autoAnalyze" name="autoAnalyze">
+              Auto-Analyze Emails
+            </label>
+            <label>
+              <input type="checkbox" id="cacheEnabled" name="cacheEnabled">
+              Enable Caching
+            </label>
+            <label>
+              <input type="checkbox" id="logHistory" name="logHistory">
+              Log Analysis History
+            </label>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Save Settings</button>
+          <button type="button" id="resetSettingsBtn" class="btn btn-secondary">Reset to Defaults</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="popup-footer">
+      <div class="footer-info">
+        <span>Version 1.0.0</span>
+        <span id="cacheStats"></span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../utils/constants.js"></script>
+  <script src="../utils/helpers.js"></script>
+  <script src="../services/dns-service.js"></script>
+  <script src="../services/threat-intel-service.js"></script>
+  <script src="../services/analyzer-service.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
