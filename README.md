@@ -2,6 +2,8 @@
 
 Real‑time phishing and threat detection for Gmail and Outlook – runs entirely in your browser.
 
+<img width="1024" height="1024" alt="Gemini_Generated_Image_9abmhb9abmhb9abm" src="https://github.com/user-attachments/assets/36450433-7666-47b9-bee4-c83729123294" />
+
 ## ✨ Key Features
 
 - **Real-Time Analysis** - Automatically scans emails as you open them in Gmail & Outlook
