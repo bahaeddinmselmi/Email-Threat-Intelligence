@@ -1,11 +1,23 @@
-# 🛡️ Email Threat Intelligence
+# 🛡️ Browser Email Threat Intelligence
 
-Real‑time phishing and threat detection for Gmail and Outlook – runs entirely in your browser.
+> A **privacy-first Chrome Extension** that detects phishing, spoofing, and dangerous links in Gmail & Outlook in real-time.
 
-<img width="1024" height="1024" alt="Gemini_Generated_Image_9abmhb9abmhb9abm" src="https://github.com/user-attachments/assets/36450433-7666-47b9-bee4-c83729123294" />
+[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-Coming_Soon-gray?logo=google-chrome)]()
+[![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue?logo=google-chrome)](https://developer.chrome.com/docs/extensions/mv3/intro/)
+[![Privacy](https://img.shields.io/badge/Privacy-Local_Processing-green?logo=privacy)](https://en.wikipedia.org/wiki/Privacy_by_design)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## 📖 Overview
+
+**Email Threat Intelligence** is a client-side security tool that acts as your personal cybersecurity analyst. It automatically scans emails for indicators of compromise (IoCs) like:
+*   **Spoofed Senders**: Mismatched From/Reply-To headers.
+*   **Authentication Failures**: Missing or invalid SPF/DKIM/DMARC signatures.
+*   **Deceptive Links**: Homoglyphs, tracking pixels, and known phishing domains.
+*   **Malicious Attachments**: Double extensions and executable payloads.
+
+Unlike cloud-based solutions, this extension runs **100% locally** in your browser. No email data is ever sent to external servers.
 
 ## ✨ Key Features
-
 - **Real-Time Analysis** - Automatically scans emails as you open them in Gmail & Outlook
 - **Phishing Detection** - Identifies social engineering, credential harvesting, and impersonation attempts
 - **URL Analysis** - Detects dangerous links, shortened URLs, and suspicious domains
@@ -17,51 +29,31 @@ Real‑time phishing and threat detection for Gmail and Outlook – runs entirel
 
 ## 🚀 Installation
 
-### Option 1: Chrome Web Store
-Coming soon!
-
-### Option 2: Manual Installation
-
-1. Download or clone this repository
-2. Open `chrome://extensions/`
-3. Enable **Developer mode** (toggle in top right)
-4. Click **Load unpacked**
-5. Select the `mail-track` folder
-6. Done! The extension appears in your toolbar
+### Option 1: Manual Installation (Developer Mode)
+1.  Clone this repository:
+    ```bash
+    git clone https://github.com/bahaeddinmselmi/phishing-detection-chrome-extension.git
+    ```
+2.  Open `chrome://extensions/` in Chrome.
+3.  Enable **Developer mode** (top right).
+4.  Click **Load unpacked**.
+5.  Select the `mail-track` folder from this repo.
 
 ## 📖 Usage
-
 ### Automatic Email Analysis
 - Open any email in Gmail or Outlook
 - Extension automatically analyzes it
 - Threat banner appears with risk level
-
-### View Detailed Analysis
-Click **View Details** on the banner to see:
-- Sender authentication status (SPF/DKIM/DMARC)
-- Domain information & reputation
-- URL risk analysis
-- Attachment threats
-- Phishing indicators
 
 ### Quick URL Check
 1. Click extension icon in toolbar
 2. Paste any URL
 3. Get instant analysis (works anywhere, no Gmail needed)
 
-## 🎯 Threat Levels
-
-| Level | Score | Action |
-|-------|-------|--------|
-| 🟢 **SAFE** | 0-30 | Email appears legitimate |
-| 🟡 **SUSPICIOUS** | 31-60 | Verify sender before interacting |
-| 🔴 **DANGEROUS** | 61-100 | Delete immediately, do not interact |
-
 ## 🔍 How It Works
-
 ### Analysis Pipeline
 1. **Parse** - Extract sender, URLs, attachments, content
-2. **Verify** - Check SPF/DKIM/DMARC records
+2. **Verify** - Check SPF/DKIM/DMARC records (via DNS-over-HTTPS)
 3. **Analyze** - Scan for phishing patterns & suspicious URLs
 4. **Score** - Calculate combined threat score
 5. **Report** - Display results with specific risk factors
@@ -71,85 +63,13 @@ Click **View Details** on the banner to see:
 - ✅ All analysis in your browser
 - ✅ Email never leaves your computer
 - ✅ No API keys required
-- ✅ Works offline (mostly)
-
-## 🌐 Supported Platforms
-
-- Gmail (mail.google.com)
-- Outlook Web (outlook.live.com, outlook.office.com, outlook.office365.com)
 
 ## ⚙️ Settings
-
 Click extension icon → **Settings** tab to configure:
-
 - **Enable/Disable Checks** - Toggle specific analysis types
 - **Auto-Analyze** - Analyze emails automatically
 - **Visual Warnings** - Show threat banners
 - **History** - Keep analysis history
 
-## 🔒 Privacy & Security
-
-- ✅ Client-side only - no servers involved
-- ✅ No email storage or transmission
-- ✅ No tracking or telemetry
-- ✅ No external APIs required
-- ✅ Open source & auditable
-
-## 📋 What Gets Analyzed
-
-**Sender Information:**
-- Email address & domain
-- SPF/DKIM/DMARC records
-- Domain age & reputation
-
-**Content Patterns:**
-- Phishing keywords (verify, confirm, urgent, etc.)
-- Social engineering tactics
-- Impersonation attempts
-- Brand spoofing
-
-**URLs:**
-- Shortened links
-- Suspicious domains
-- IP addresses instead of domains
-- Homoglyph attacks
-- Dangerous TLDs
-
-**Attachments:**
-- Executable files (.exe, .bat, .scr, etc.)
-- Macro-enabled documents (.docm, .xlsm)
-- Double extensions
-- Archive bombs
-
-**Email Structure:**
-- Very short body with links
-- Spam folder detection
-- Multiple recipients
-- HTML formatting anomalies
-
-## 🛠️ Technical Details
-
-- **Architecture**: Manifest V3 (modern Chrome extension)
-- **Language**: Vanilla JavaScript (no heavy dependencies)
-- **Storage**: Browser local storage for settings & history
-- **DNS**: Optional DNS-over-HTTPS for record checks
-
-## ⚠️ Limitations
-
-- DKIM verification needs full email headers (not always available)
-- Domain age/registrar use local analysis only
-- Some checks require DNS queries (optional, can be slow)
-- Effectiveness depends on email content & structure
-
-## 🤝 Contributing
-
-Ideas for improvement:
-- More phishing patterns
-- ML-based scoring
-- Additional email providers
-- Performance optimizations
-- UI enhancements
-
 ## 📄 License
-
-This project is licensed under the **MIT License**. See `LICENSE` for details.
+MIT
